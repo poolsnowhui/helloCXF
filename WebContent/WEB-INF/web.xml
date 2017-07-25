@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>WEB-INF/classes/applicationContext.xml</param-value>
-  </context-param>
-  <listener>
-    <listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-  </listener>
-  <servlet>
-    <display-name>CXFServlet</display-name>
-    <servlet-name>CXFServlet</servlet-name>
-    <servlet-class>
-			org.apache.cxf.transport.servlet.CXFServlet
-		</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CXFServlet</servlet-name>
-    <url-pattern>/webservice/*</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<!-- 打开工程的首页，这里没使用 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- applicationContext.xml所在的位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/classes/applicationContext.xml</param-value>
+	</context-param>
+	<!-- 配置spring框架来截取url -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- CXFServlet页面，采用 /webservice/*的方式，*代表匹配任意字段这里匹配 @WebService(endpointInterface="com.demo.HelloWorld",serviceName="HelloWorld")中的HelloWorld -->
+	<servlet>
+		<display-name>CXFServlet</display-name>
+		<!-- 与下面的名称一致 -->
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<!-- 与上面的名称一致 -->
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/webservice/*</url-pattern>
+	</servlet-mapping>
 </web-app>

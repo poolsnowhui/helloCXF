@@ -4,7 +4,11 @@
  * @file:User.java
  */
 package com.demo;
-
+/**
+ * user数据
+ * @author chixh
+ *
+ */
 public class User {
 	private String name;
 	private String description;

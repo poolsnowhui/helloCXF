@@ -10,7 +10,7 @@ import java.util.List;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * 服务点接口
+ * 服务点接口，三个方法对应HelloWorldImpl
  * @author chixh
  *
  */

@@ -3,24 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xsi:schemaLocation="
                        http://www.springframework.org/schema/beans
-
                        http://www.springframework.org/schema/beans/spring-beans.xsd
                        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
-
+	<!-- 该资源包含在CXF框架包中 -->
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-
+	<!-- 配置接口implementor为实现类的全类名，address地址与实现类中的serviceName和url访问名字相同，与web。xml中/webservice/*组合成/webservice/HelloWorld -->
 	<jaxws:endpoint id="HelloWorld" implementor="com.demo.HelloWorldImpl"
 		address="/HelloWorld" publish="true"/>
-
+	<!-- 客户端的配置内容，HelloWorld的一个bean实例，服务端不需要此配置，这里为了方便，放在一起 -->
 	<bean id="client" class="com.demo.HelloWorld" factory-bean="clientFactory"
 		factory-method="create" />
-
+	<!-- 客户端的配置内容，id为factory-bean，要一致，表示从该地址以HelloWorld接口来获取内容 -->
 	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
 		<property name="serviceClass" value="com.demo.HelloWorld" />
 		<property name="address"
-
 			value="http://localhost:8080/helloCXF/webservice/HelloWorld" />
 	</bean>
 </beans>
