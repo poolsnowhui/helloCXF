@@ -7,10 +7,11 @@ package com.demo;
 
 import java.util.List;
 
+import javax.activation.DataHandler;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * 服务点接口，三个方法对应HelloWorldImpl
+ * 服务点接口，五个方法对应HelloWorldImpl
  * @author chixh
  *
  */
@@ -18,5 +19,8 @@ import javax.jws.WebService;
 public interface HelloWorld {
 	String sayHi(@WebParam(name="text")String text);
 	String sayHiToUser(User user);
-	String[] SayHiToUserList(List<User> userList);
+	String[] sayHiToUserList(List<User> userList);
+	String uploadFile(String fileName,DataHandler dataHandler);
+	byte[] fieldToJson(String field);
+	byte[] downloadFile(String fileName);
 }
