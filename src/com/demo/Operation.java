@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 
 public class Operation {
+	public static String uploadFile = "D:\\spring\\workspace\\helloCXF\\upload_files\\";
 	/**
 	 * 保存文件
 	 * 
@@ -67,9 +68,9 @@ public class Operation {
 	public static String uploadFile(String fileName, DataHandler dataHandler) {
 		String info = "";
 		if (fileName != null && dataHandler != null) {
-			File dir = new File("./upload_files");
+			File dir = new File(uploadFile);
 			dir.mkdirs();
-			File f = new File("./upload_files/" + fileName);
+			File f = new File(uploadFile + fileName);
 			// Logger.getRootLogger().info("文件路径:"+f.getAbsolutePath());
 			if (saveFile(f, dataHandler)) {
 				info = "The file upload successful.The directory is in " + f.getAbsolutePath() + ".";
@@ -93,9 +94,9 @@ public class Operation {
 		byte[] bytes = null;
 		InputStream fis = null;
 		if (fileName != null && fileName != "") {
-			File dir = new File("./upload_files");
+			File dir = new File(uploadFile);
 			dir.mkdirs();
-			File f = new File("./upload_files/" + fileName);
+			File f = new File(uploadFile + fileName);
 			if (f.exists()) {
 				try {
 					fis = new FileInputStream(f);
