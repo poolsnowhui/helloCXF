@@ -24,5 +24,8 @@ public class webServiceApp {
 		DataHandler dataHandler = new DataHandler(new FileDataSource("./input.txt"));
 		System.out.println(implementor.uploadFile("已上传.txt", dataHandler));
 	}
+	public void test(){
+		System.out.println("test");
+	}
 }
 	
